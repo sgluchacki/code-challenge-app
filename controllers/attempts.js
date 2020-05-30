@@ -1,9 +1,16 @@
 const Attempt = require('../models/attempt');
 
-module.exports = {
-    getAllAttempts
+
+// need to update this to be based on each coder
+function getAllAttempts(req, res) {
+    Attempt.find({}, function(err, allAttemptsFromDb) {
+        res.render('attempts/index', {
+            allAttempts: allAttemptsFromDb,
+            title: 'All Attempts'
+        })
+    })
 }
 
-function getAllAttempts(req, res) {
-
+module.exports = {
+    getAllAttempts
 }

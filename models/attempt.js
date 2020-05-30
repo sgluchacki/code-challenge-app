@@ -22,6 +22,6 @@ const codeAttemptSchema = new Schema({
 },
 {
     timestamps: true
-})
+});
 
-module.exports = mongoose.model('Coder', codeAttemptSchema);
+module.exports = mongoose.model('Attempt', codeAttemptSchema);

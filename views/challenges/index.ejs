@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+
+<% if (allChallenges.length) { %>
+<table>
+    <thead><tr>
+        <td>Challenge Name</td>
+        <td>Has This Been Solved?</td>
+        <td>Gist</td>
+        <td></td>
+    </tr></thead>
+    <tbody>
+            <% allChallenges.forEach(function(challenge) { %>
+                <tr>
+                    <td><%= challenge.title %></td>
+                    <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
+                    <td><%= challenge.gist %></td>
+                    <td><a href="/challenges/<%= challenge._id %>">Details</a></td>
+                </tr>
+
+            <% }) %>
+        <% } else { %>
+            <p>No Challenges Yet</p>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('../partials/footer.ejs') %>

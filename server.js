@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 app.use(session({
-  secret: 'SEIRocks!',
+  secret: 'SoYouThinkYouCanCode',
   resave: false,
   saveUninitialized: true
 }));
