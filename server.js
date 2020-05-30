@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 app.use(session({
-  secret: 'hoorayForCodeChallenges!',
+  secret: 'SEIRocks!',
   resave: false,
   saveUninitialized: true
 }));
@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', usersRouter);
 app.use('/attempts', attemptRouter);
 app.use('/challenges', challengeRouter);
 

@@ -7,3 +7,5 @@ require('../middleware/authenticate');
 const attemptsCtrl = require('../controllers/attempts');
 
 router.get('/', attemptsCtrl.getAllAttempts);
+
+module.exports = router;

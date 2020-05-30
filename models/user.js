@@ -5,10 +5,11 @@ const userSchema = new Schema({
     name: String,
     email: String,
     googleId: String,
+    avatar: String,
     displayName: String,
     skills: {
         type: String,
-        enum: [JavaScript]
+        enum: ['JavaScript']
     },
     isCoder: Boolean,
     isChallenger: Boolean
