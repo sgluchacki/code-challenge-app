@@ -2,6 +2,8 @@ var express = require('express');
 const passport = require('passport');
 var router = express.Router();
 
+const usersCtrl = require('../controllers/users');
+
 /* GET users listing. */
 router.get('/auth/google',
     passport.authenticate('google', { 
@@ -20,5 +22,7 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+router.get('/:googleId/preferences', usersCtrl.showPreferences);
 
 module.exports = router;

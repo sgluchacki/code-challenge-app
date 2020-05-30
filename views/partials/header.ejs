@@ -8,10 +8,11 @@
 <body>
     <nav>
         <a href="/challenges">ALL CHALLENGES</a> |
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
+        <!-- expand if statement to include other links -->
         <% if (user) { %>
+        <a href=""></a>
+        <a href=""></a>
+        <a href="">USER SETTINGS</a> |
             <a href="/logout">LOGOUT</a>
         <% } else { %>
             <a href="/auth/google">LOGIN</a>
