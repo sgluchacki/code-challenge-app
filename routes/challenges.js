@@ -7,6 +7,6 @@ const challengesCtrl = require('../controllers/challenges');
 require('../middleware/authenticate');
 
 // Routes
-
+router.get('/', challengesCtrl.getAllChallenges);
 
 module.exports = router;

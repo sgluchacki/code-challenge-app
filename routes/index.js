@@ -1,14 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-const challengesCtrl = require('../controllers/challenges');
+// required for hasSelectedUserType redirector
+require('../middleware/authenticate');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// Displays unauthenticated view of challenges
-router.get('/', challengesCtrl.getAllChallenges);
+//confirm this after building views
+// Is this a slick solution? It feels like a slick solution.
+router.get('/index', hasSelectedUserType);
+
 
 module.exports = router;

@@ -44,8 +44,8 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
-app.use('/:googleId/attempts', attemptRouter);
-app.use('/:googleId/challenges', challengeRouter);
+app.use('/attempts', attemptRouter);
+app.use('/challenges', challengeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

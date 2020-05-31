@@ -13,7 +13,7 @@ router.get('/auth/google',
 
 router.get('/oauth2callback',
   passport.authenticate('google', {
-    successRedirect: '/',     // redirect user here
+    successRedirect: '/index',     // redirect user here
     failureRedirect: '/'
   })
 );
@@ -23,6 +23,6 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-router.get('/:googleId/preferences', usersCtrl.showPreferences);
+router.get('/preferences', usersCtrl.showPreferences);
 
 module.exports = router;

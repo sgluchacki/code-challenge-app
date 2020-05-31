@@ -7,9 +7,16 @@ function showPreferences(req, res) {
     });
 }
 
+function updatePreferences(req, res) {
+    User.findByIdAndUpdate(req.User._id, req.body, {new: true}, function(err, updatedUser) {
+        res.redirect('/index');
+    });
+}
+
 // Here I'll need to update the user profile
 // Also will need to send update form
 
 module.exports = {
-    showPreferences
+    showPreferences,
+    updatePreferences
 }

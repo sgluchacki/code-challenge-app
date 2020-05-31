@@ -8,7 +8,7 @@ function isLoggedIn(req, res, next) {
 function hasSelectedUserType(req, res, next) {
     let challengerCheck = req.user.isChallenger;
     let coderCheck = req.user.isCoder;
-    if (challengerCheck) res.redirect('/:googleId/challenges');
-    else if (coderCheck) res.redirect('/:googleId/attempts');
-    else res.redirect('/:googleId/preferences');
+    if (challengerCheck) res.redirect('/challenges');
+    else if (coderCheck) res.redirect('/attempts');
+    else res.redirect('/preferences');
 }
