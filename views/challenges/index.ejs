@@ -1,19 +1,25 @@
 <%- include('../partials/header.ejs') %>
 
+<% if (user) { %>
+    <a href="/challenges/new">Submit a New Challenge</a>
+<% } %>
+
 <% if (allChallenges.length) { %>
 <table>
     <thead><tr>
         <td>Challenge Name</td>
-        <td>Has This Been Solved?</td>
         <td>Gist</td>
+        <td>Number of Attempts</td>
+        <td>Has This Been Solved?</td>
         <td></td>
     </tr></thead>
     <tbody>
             <% allChallenges.forEach(function(challenge) { %>
                 <tr>
                     <td><%= challenge.title %></td>
-                    <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
                     <td><%= challenge.gist %></td>
+                    <td>Number of attempts here</td>
+                    <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
                     <td><a href="/challenges/<%= challenge._id %>">Details</a></td>
                 </tr>
 

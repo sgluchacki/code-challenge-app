@@ -10,7 +10,21 @@ function getAllChallenges(req, res) {
     });
 }
 
+function showNewChallengeForm(req, res) {
+    res.render('challenges/new', {
+        title: 'Create A New Challenge'
+    });
+}
+
+function createNewChallenge(req, res) {
+    Challenge.create(req.body, function(err, newChallenge) {
+        newChallenge.challenger = user._id;
+        res.redirect('/challenges');
+    });
+}
 
 module.exports = {
-    getAllChallenges
+    getAllChallenges,
+    showNewChallengeForm,
+    createNewChallenge
 }

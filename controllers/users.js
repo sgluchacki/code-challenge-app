@@ -15,9 +15,6 @@ function updatePreferences(req, res) {
     });
 }
 
-// Here I'll need to update the user profile
-// Also will need to send update form
-
 module.exports = {
     showPreferences,
     updatePreferences

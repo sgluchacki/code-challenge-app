@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs') %>
+
+<form action="/users/<%= user.googleId %>?_method=PUT" method="POST">
+    <label>Title:</label>
+    <input type="text" name="title"><br>
+    <label>The Gist:</label>
+    <input type="text" name="title" maxlength="150"><br>
+    <!-- inside text area, a return is registered as something like \r\n
+    search #instructions in Jae slack channel -->
+    <label>Detailed Description:</label><br>
+    <textarea name="details" rows="10" cols="60"></textarea><br>
+    <input type="submit" value="Update Profile">
+</form>
+
+<%- include('../partials/footer.ejs') %>
