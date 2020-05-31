@@ -6,12 +6,11 @@ function showPreferences(req, res) {
             title: 'Preferences',
             user: userFromDb
         });
-
-    })
+    });
 }
 
 function updatePreferences(req, res) {
-    User.findByIdAndUpdate(req.User._id, req.body, {new: true}, function(err, updatedUser) {
+    User.findByIdAndUpdate(req.user._id, req.body, {new: true}, function(err, updatedUser) {
         res.redirect('/index');
     });
 }

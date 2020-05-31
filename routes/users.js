@@ -25,4 +25,6 @@ router.get('/logout', function(req, res){
 
 router.get('/preferences', usersCtrl.showPreferences);
 
+router.put('/users/:googleId', usersCtrl.updatePreferences);
+
 module.exports = router;
