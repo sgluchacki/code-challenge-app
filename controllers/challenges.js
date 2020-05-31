@@ -17,8 +17,9 @@ function showNewChallengeForm(req, res) {
 }
 
 function createNewChallenge(req, res) {
+    req.body.challenger = req.user._id;
+    console.log(req.body , 'req.body')
     Challenge.create(req.body, function(err, newChallenge) {
-        newChallenge.challenger = user._id;
         res.redirect('/challenges');
     });
 }
