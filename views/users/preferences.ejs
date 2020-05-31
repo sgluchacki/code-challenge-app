@@ -2,6 +2,18 @@
 
 <form action="/users/<%= user.googleId %>?_method=PUT" method="POST">
     <label>Display Name:</label>
+    <input type="text" name="displayName" value=<%= user.displayName %>><br>
+    <label>Do you want to be a coder?</label>
+    <select name="isCoder">
+        <option value="<%= user.isCoder %>" selected><%= user.isCoder %></option>
+        <option value="<%= !user.isCoder %>"><%= !user.isCoder %></option>
+    </select><br>
+    <label>Do you want to be a challenger?</label>
+    <select name="isChallenger">
+        <option value="<%= user.isChallenger %>" selected><%= user.isChallenger %></option>
+        <option value="<%= !user.isChallenger %>"><%= !user.isChallenger %></option>
+    </select><br>
+    <input type="submit" value="Update Profile">
 </form>
 
 <%- include('../partials/footer.ejs') %>

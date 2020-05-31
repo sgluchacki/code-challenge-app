@@ -1,10 +1,13 @@
 const User = require('../models/user');
 
 function showPreferences(req, res) {
-    User.find()
-    res.render('users/preferences', {
-        title: 'Preferences'
-    });
+    User.findById(req.user._id, function(err, userFromDb) {
+        res.render('users/preferences', {
+            title: 'Preferences',
+            user: userFromDb
+        });
+
+    })
 }
 
 function updatePreferences(req, res) {

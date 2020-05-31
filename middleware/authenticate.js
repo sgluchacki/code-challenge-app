@@ -12,3 +12,8 @@ function hasSelectedUserType(req, res, next) {
     else if (coderCheck) res.redirect('/attempts');
     else res.redirect('/preferences');
 }
+
+module.exports = {
+    isLoggedIn,
+    hasSelectedUserType
+}

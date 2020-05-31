@@ -2,16 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 // required for hasSelectedUserType redirector
-require('../middleware/authenticate');
+const authenticate = require('../middleware/authenticate');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Code Checker' });
 });
 
 //confirm this after building views
 // Is this a slick solution? It feels like a slick solution.
-router.get('/index', hasSelectedUserType);
+router.get('/index', authenticate.hasSelectedUserType);
 
 
 module.exports = router;

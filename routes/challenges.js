@@ -4,7 +4,7 @@ const router = express.Router();
 const challengesCtrl = require('../controllers/challenges');
 
 // required for use of isLoggedIn
-require('../middleware/authenticate');
+const authenticate = require('../middleware/authenticate');
 
 // Routes
 router.get('/', challengesCtrl.getAllChallenges);
