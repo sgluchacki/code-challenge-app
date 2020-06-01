@@ -14,7 +14,7 @@
                 <% allAttempts.forEach(function(attempt, index) { %>
                     <tr>
                         <td>Can I get the number of attempts per challenge here?</td>
-                        <td><%= attempt.challenge.challenger %></td>
+                        <td><%= attempt.challenge.challenger.displayName %></td>
                         <td><%= attempt.challenge.title %></td>
                         <td><%= attempt.challenge.gist %></td>
                         <td><%= attempt.isCorrect ? 'Yes' : 'No' %></td>

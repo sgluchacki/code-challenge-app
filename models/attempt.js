@@ -19,6 +19,10 @@ const codeAttemptSchema = new Schema({
         type: String,
         enum: ['-1', '0', '1']      // 0 => unreviewed, -1 => not valid, 1 => valid
     },
+    brief: {
+        type: String,
+        maxlength: 150,
+    },
     codeBody: {
         type: String,
         required: true
