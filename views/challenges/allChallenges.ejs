@@ -18,7 +18,7 @@
             <% allChallenges.forEach(function(challenge) { %>
                 <tr>
                     <td><%= challenge.title %></td>
-                    <td><%= challenge.challenger %></td>
+                    <td><%= challenge.challenger.displayName %></td>
                     <td><%= challenge.gist %></td>
                     <td>Number of attempts here</td>
                     <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>

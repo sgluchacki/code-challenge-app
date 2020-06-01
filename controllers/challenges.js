@@ -4,8 +4,9 @@ const User = require('../models/user');
 function getAllChallenges(req, res) {
     // console.log(req.user, '<-----req.user')
     Challenge.find({})
-    .populate({path: 'user'})  // figure out this shinola
+    .populate({path: 'challenger'})  // figure out this shinola
     .exec(function(err, allChallengesFromDb) {
+        // console.log(allChallengesFromDb , '<======allChallengesFromDb')
         res.render('challenges/allChallenges', {
             allChallenges: allChallengesFromDb,
             title: 'All Challenges'
