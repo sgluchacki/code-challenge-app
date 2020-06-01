@@ -21,6 +21,16 @@
     </tr>
     </tbody>
 </table>
+<br>
+<br> 
+<br>
+<form action="/challenges/<%= challenge._id %>/attempts" method="POST">
+    <label>Brief Description:</label>
+    <input  type="text" name="brief"><br>
+    <label>Enter Your Code:</label><br>
+    <textarea name="codeBody" cols="30" rows="10"></textarea><br>
+    <input type="submit" value="Submit Your Attempt">
+</form>
 
 <h2>This is where the list of attempts for this challenge will live</h2>
 

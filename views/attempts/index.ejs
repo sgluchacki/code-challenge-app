@@ -1,5 +1,29 @@
 <%- include('../partials/header.ejs') %>
 
-<p>all of your attempts will go here</p>
+<% if (allAttempts.length) { %>
+    <table>
+        <thead><tr>
+            <td>Attempt Number</td>
+            <td>Challenge</td>
+            <td>Gist</td>
+            <td>Is This Correct?</td>
+            <td></td>
+        </tr></thead>
+        <tbody>
+                <% allAttempts.forEach(function(attempt, index) { %>
+                    <tr>
+                        <td>Can I get the number of attempts per challenge here?</td>
+                        <td><%= attempt.challenge %></td>
+                        <td>attempt.challenge.gist</td>
+                        <td><%= attempt.isCorrect ? 'Yes' : 'No' %></td>
+                        <td><a href="/attempts/<%= attempt._id %>">Details</a></td>
+                    </tr>
+    
+                <% }) %>
+            <% } else { %>
+                <p>No Attempts Yet</p>
+            <% } %>
+        </tbody>
+    </table>
 
 <%- include('../partials/footer.ejs') %>

@@ -18,6 +18,10 @@ const codeAttemptSchema = new Schema({
     isCorrect: {
         type: String,
         enum: ['-1', '0', '1']      // 0 => unreviewed, -1 => not valid, 1 => valid
+    },
+    codeBody: {
+        type: String,
+        required: true
     }
 },
 {

@@ -1,12 +1,25 @@
 const Challenge = require('../models/challenge');
+const User = require('../models/user');
 
 function getAllChallenges(req, res) {
-    console.log(req.user, '<-----req.user')
-    Challenge.find({}, function(err, allChallengesFromDb) {
-        res.render('challenges/index', {
+    // console.log(req.user, '<-----req.user')
+    Challenge.find({})
+    .populate({path: 'user'})  // figure out this shinola
+    .exec(function(err, allChallengesFromDb) {
+        res.render('challenges/allChallenges', {
             allChallenges: allChallengesFromDb,
             title: 'All Challenges'
         });
+    });
+}
+
+function getAllChallengesForUser(req, res) {
+    // console.log(req.user, '<==== req.user')
+    Challenge.find({challenger: req.user._id}, function(err, userChallenges) { // why no work?
+        res.render('challenges/index', {
+            userChallenges,
+            title: 'All of Your Challenges'
+        })
     });
 }
 
@@ -31,6 +44,7 @@ function showOneChallenge(req, res) {
     // console.log('req ===========>', req , '<======== req')
     // console.log(req.user , '<======== req.user')
     Challenge.findById(req.params.id, function(err, challenge) {
+        // console.log(challenge , '<==============challenge from showOneChallenge')
         res.render('challenges/show', {
         title: challenge.title,
         challenge    
@@ -44,6 +58,7 @@ function showOneChallenge(req, res) {
 
 module.exports = {
     getAllChallenges,
+    getAllChallengesForUser,
     showNewChallengeForm,
     createNewChallenge,
     showOneChallenge

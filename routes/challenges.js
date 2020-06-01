@@ -7,8 +7,12 @@ const challengesCtrl = require('../controllers/challenges');
 const authenticate = require('../middleware/authenticate');
 
 // Routes
+
 // Displays all challenges sitewide
-router.get('/', challengesCtrl.getAllChallenges);
+router.get('/', challengesCtrl.getAllChallengesForUser);
+
+// Displays all challenges sitewide
+router.get('/all', challengesCtrl.getAllChallenges);
 
 // Displays new challenge form
 router.get('/new', challengesCtrl.showNewChallengeForm);

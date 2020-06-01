@@ -7,8 +7,8 @@ function getAllAttempts(req, res) {
         res.render('attempts/index', {
             allAttempts: allAttemptsFromDb,
             title: 'All Attempts'
-        })
-    })
+        });
+    });
 }
 
 module.exports = {

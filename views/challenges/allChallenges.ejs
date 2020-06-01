@@ -4,7 +4,7 @@
     <a href="/challenges/new">Submit a New Challenge</a>
 <% } %>
 
-<% if (userChallenges.length) { %>
+<% if (allChallenges.length) { %>
 <table>
     <thead><tr>
         <td>Challenge Name</td>
@@ -15,7 +15,7 @@
         <td></td>
     </tr></thead>
     <tbody>
-            <% userChallenges.forEach(function(challenge) { %>
+            <% allChallenges.forEach(function(challenge) { %>
                 <tr>
                     <td><%= challenge.title %></td>
                     <td><%= challenge.challenger %></td>
