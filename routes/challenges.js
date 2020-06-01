@@ -13,6 +13,9 @@ router.get('/', challengesCtrl.getAllChallenges);
 // Displays new challenge form
 router.get('/new', challengesCtrl.showNewChallengeForm);
 
+// Displays one challenge
+router.get('/:id', challengesCtrl.showOneChallenge);
+
 // Creates new challenge from submitted form
 router.post('/', challengesCtrl.createNewChallenge);
 

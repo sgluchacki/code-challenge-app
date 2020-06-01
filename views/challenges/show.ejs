@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+
+
+<table>
+    <thead><tr>
+        <td>Challenge Name</td>
+        <td>Gist</td>
+        <td>Number of Attempts</td>
+        <td>Has This Been Solved?</td>
+        <td>Details</td>
+    </tr></thead>
+    <tbody><tr>
+        <td><%= challenge.title %></td>
+        <td><%= challenge.gist %></td>
+
+
+        <!-- fix this when the attempts are working. -->
+        <td>Number of attempts here</td>
+        <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
+        <td><%= challenge.details %></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>This is where the list of attempts for this challenge will live</h2>
+
+<%- include('../partials/footer.ejs') %>

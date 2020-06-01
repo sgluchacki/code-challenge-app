@@ -1,5 +1,9 @@
 const User = require('../models/user');
 
+// According to Jim/Gabe thread this is a security flaw. Why????????
+// Is this a cookie thing?????
+// If it's part of req.user, isn't this just pulled from the db???????
+// regardless, should update because User.findById(req.user._id === req.user
 function showPreferences(req, res) {
     User.findById(req.user._id, function(err, userFromDb) {
         res.render('users/preferences', {
