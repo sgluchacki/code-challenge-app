@@ -4,6 +4,7 @@
     <table>
         <thead><tr>
             <td>Attempt Number</td>
+            <td>Challenger</td>
             <td>Challenge</td>
             <td>Gist</td>
             <td>Is This Correct?</td>
@@ -13,13 +14,14 @@
                 <% allAttempts.forEach(function(attempt, index) { %>
                     <tr>
                         <td>Can I get the number of attempts per challenge here?</td>
-                        <td><%= attempt.challenge %></td>
-                        <td>attempt.challenge.gist</td>
+                        <td><%= attempt.challenge.challenger %></td>
+                        <td><%= attempt.challenge.title %></td>
+                        <td><%= attempt.challenge.gist %></td>
                         <td><%= attempt.isCorrect ? 'Yes' : 'No' %></td>
                         <td><a href="/attempts/<%= attempt._id %>">Details</a></td>
                     </tr>
     
-                <% }) %>
+                <% }); %>
             <% } else { %>
                 <p>No Attempts Yet</p>
             <% } %>

@@ -8,7 +8,6 @@
 <table>
     <thead><tr>
         <td>Challenge Name</td>
-        <td>Author</td>
         <td>Gist</td>
         <td>Number of Attempts</td>
         <td>Has This Been Solved?</td>
@@ -18,7 +17,6 @@
             <% userChallenges.forEach(function(challenge) { %>
                 <tr>
                     <td><%= challenge.title %></td>
-                    <td><%= challenge.challenger %></td>
                     <td><%= challenge.gist %></td>
                     <td>Number of attempts here</td>
                     <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>

@@ -7,6 +7,10 @@ const attemptsCtrl = require('../controllers/attempts');
 const authenticate = require('../middleware/authenticate');
 
 // Routes
+// Shows all attempts for a user
 router.get('/', attemptsCtrl.getAllAttempts);
+
+// Creates a new attempts
+router.post('/challenges/:challengeID/attempts', attemptsCtrl.createAttempt);
 
 module.exports = router;
