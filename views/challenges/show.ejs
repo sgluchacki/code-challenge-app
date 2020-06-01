@@ -1,16 +1,22 @@
 <%- include('../partials/header.ejs') %>
 
 
+<h2>UPDATE THIS TO INCLUDE (YOU) WHEN YOU GET IT TO WORK, YOU!!!!!!!!</h2>
+
 <table>
     <thead><tr>
+        <td></td>
         <td>Challenge Name</td>
+        <td>Author</td>
         <td>Gist</td>
         <td>Number of Attempts</td>
         <td>Has This Been Solved?</td>
         <td>Details</td>
     </tr></thead>
     <tbody><tr>
+        <td><a href="/attempts/challenges/<%= challenge._id %>/new">Attempt this!</a></td>
         <td><%= challenge.title %></td>
+        <td><%= challenge.challenger.displayName %></td>
         <td><%= challenge.gist %></td>
 
 
@@ -24,13 +30,7 @@
 <br>
 <br> 
 <br>
-<form action="/attempts/challenges/<%= challenge._id %>/attempts" method="POST">
-    <label>Brief Description:</label>
-    <input  type="text" name="brief"><br>
-    <label>Enter Your Code:</label><br>
-    <textarea name="codeBody" cols="30" rows="10"></textarea><br>
-    <input type="submit" value="Submit Your Attempt">
-</form>
+
 
 <h2>This is where the list of attempts for this challenge will live</h2>
 

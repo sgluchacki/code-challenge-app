@@ -7,6 +7,7 @@
 <% if (allChallenges.length) { %>
 <table>
     <thead><tr>
+        <td></td>
         <td>Challenge Name</td>
         <td>Author</td>
         <td>Gist</td>
@@ -17,6 +18,7 @@
     <tbody>
             <% allChallenges.forEach(function(challenge) { %>
                 <tr>
+                    <td><a href="/attempts/challenges/<%= challenge._id %>/new">Attempt this!</a></td>
                     <td><%= challenge.title %></td>
                     <td><%= challenge.challenger.displayName %></td>
                     <td><%= challenge.gist %></td>

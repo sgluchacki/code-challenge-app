@@ -44,7 +44,9 @@ function showOneChallenge(req, res) {
     // pass challenge along
     // console.log('req ===========>', req , '<======== req')
     // console.log(req.user , '<======== req.user')
-    Challenge.findById(req.params.id, function(err, challenge) {
+    Challenge.findById(req.params.id)
+        .populate({path: 'challenger'})
+        .exec(function(err, challenge) {
         // console.log(challenge , '<==============challenge from showOneChallenge')
         res.render('challenges/show', {
         title: challenge.title,

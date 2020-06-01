@@ -10,7 +10,14 @@ const authenticate = require('../middleware/authenticate');
 // Shows all attempts for a user
 router.get('/', attemptsCtrl.getAllAttempts);
 
+// Shows form for submitting a new attempt
+// Does not follow user-centric RESTful routing (UCRR),
+// but needed to reduce clutter 
+// and for better navigational flow
+router.get('/challenges/:challengeID/new', attemptsCtrl.showNewAttemptForm)
+
 // Creates a new attempts
-router.post('/challenges/:challengeID/attempts', attemptsCtrl.createAttempt);
+// Not RESTful according to UCRR, but greatly improves flow across routers
+router.post('/challenges/:challengeID', attemptsCtrl.createAttempt);
 
 module.exports = router;
