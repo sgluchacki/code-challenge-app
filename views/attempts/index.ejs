@@ -3,7 +3,6 @@
 <% if (allAttempts.length) { %>
     <table>
         <thead><tr>
-            <td>Attempt Number</td>
             <td>Challenger</td>
             <td>Challenge</td>
             <td>Gist of Challenge</td>
@@ -14,7 +13,6 @@
         <tbody>
                 <% allAttempts.forEach(function(attempt, index) { %>
                     <tr>
-                        <td>Can I get the number of attempts per challenge here?</td>
                         <td><%= attempt.challenge.challenger.displayName %>
                             <%= JSON.stringify(attempt.challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
                         </td>
