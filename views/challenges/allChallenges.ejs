@@ -14,6 +14,7 @@
         <td>Author</td>
         <td>Gist</td>
         <td>Number of Attempts</td>
+        <td>Have I Attempted This?</td>
         <td>Has This Been Solved?</td>
         <td></td>
     </tr></thead>
@@ -24,9 +25,12 @@
                         <td><a href="/attempts/challenges/<%= challenge._id %>/new">Attempt this!</a></td>
                     <% } %>
                     <td><%= challenge.title %></td>
-                    <td><%= challenge.challenger.displayName %></td>
+                    <td><%= challenge.challenger.displayName %>
+                        <%= JSON.stringify(challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
+                    </td>
                     <td><%= challenge.gist %></td>
                     <td>Number of attempts here</td>
+                    <td>If you've attempted it, it'll go here</td>
                     <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
                     <td><a href="/challenges/<%= challenge._id %>">Details</a></td>
                 </tr>

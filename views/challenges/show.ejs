@@ -1,8 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
 
-<h2>UPDATE THIS TO INCLUDE (YOU) WHEN YOU GET IT TO WORK, YOU!!!!!!!!</h2>
-
 <table>
     <thead><tr>
         <td></td>
@@ -16,7 +14,9 @@
     <tbody><tr>
         <td><a href="/attempts/challenges/<%= challenge._id %>/new">Attempt this!</a></td>
         <td><%= challenge.title %></td>
-        <td><%= challenge.challenger.displayName %></td>
+        <td><%= challenge.challenger.displayName %>
+            <%= JSON.stringify(challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
+        </td>
         <td><%= challenge.gist %></td>
 
 
