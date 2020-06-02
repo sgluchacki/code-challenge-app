@@ -9,6 +9,7 @@
             <td>Brief of Attempt</td>
             <td>Is This Correct?</td>
             <td></td>
+            <td></td>
         </tr></thead>
         <tbody>
                 <% allAttempts.forEach(function(attempt, index) { %>
@@ -19,8 +20,18 @@
                         <td><%= attempt.challenge.title %></td>
                         <td><%= attempt.challenge.gist %></td>
                         <td><%= attempt.brief %></td>
-                        <td><%= attempt.isCorrect ? 'Yes' : 'No' %></td>
+                        <td><% if (attempt.isCorrect === '-1') { %>Nope
+                            <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
+                            <% } else if (attempt.isCorrect === '1') { %>Yes!
+                            <% } %></td>
                         <td><a href="/attempts/<%= attempt._id %>">Details</a></td>
+                        <% if (attempt.isCorrect === '0') { %>
+                            <td>
+                                <form action="/attempts/<%= attempt._id %>?_method=DELETE" method="POST" style="display: inline;">
+                                    <input type="submit" value="DELETE">
+                                </form>
+                            </td>
+                        <% } %>
                     </tr>
     
                 <% }); %>

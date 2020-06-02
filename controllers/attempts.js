@@ -45,6 +45,7 @@ function showOneAttempt(req, res) {
     Attempt.findById(req.params.attemptID)
         .populate({path: 'challenge'})
         .exec(function(err, attemptFromDb) {
+            console.log(attemptFromDb , '<======attemptFromDb')
             res.render('attempts/show', {
                 title: `Details of "${attemptFromDb.brief}"`,
                 attempt: attemptFromDb
@@ -52,9 +53,16 @@ function showOneAttempt(req, res) {
     });
 }
 
+function deleteOneAttempt(req, res) {
+    Attempt.findByIdAndRemove(req.params.attemptID, function(err) {
+        res.redirect('/attempts');
+    })
+}
+
 module.exports = {
     getAllAttempts,
     showNewAttemptForm,
     createAttempt,
-    showOneAttempt
+    showOneAttempt,
+    deleteOneAttempt
 }

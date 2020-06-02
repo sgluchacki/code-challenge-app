@@ -48,9 +48,9 @@
             <tr>
                 <td><%= attempt.coder.displayName %></td>
                 <td>
-                    <% if (attempt.isCorrect === -1) { %>Nope
-                    <% } else if (attempt.isCorrect === 0) { %>Awaiting Review
-                    <% } else { %>Yes!
+                    <% if (attempt.isCorrect === '-1') { %>Nope
+                    <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
+                    <% } else if (attempt.isCorrect === '1') { %>Yes!
                     <% } %>
                 </td>
                 <td><%= attempt.brief %></td>

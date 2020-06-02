@@ -7,18 +7,28 @@
         <td>Is this Correct?</td>
         <td>Brief</td>
         <td>Your Attempt</td> 
+        <% if (attempt.isCorrect === '0') { %>
+            <td></td>
+        <% } %> 
     </tr></thead>
     <tbody><tr>
         <td><%= attempt.challenge.title %></td>
         <td>show attempt number here</td>
         <td>
-            <% if (attempt.isCorrect === -1) { %>Nope
-            <% } else if (attempt.isCorrect === 0) { %>Awaiting Review
-            <% } else { %>Yes!
+            <% if (attempt.isCorrect === '-1') { %>Nope
+            <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
+            <% } else if (attempt.isCorrect === '1') { %>Yes!
             <% } %>
         </td>
         <td><%= attempt.brief %></td>
         <td><%= attempt.codeBody %></td>
+        <% if (attempt.isCorrect === '0') { %>
+            <td>
+                <form action="/attempts/<%= attempt._id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <input type="submit" value="DELETE">
+                </form>
+            </td>
+        <% } %>
     </tr>
     </tbody>
 </table>

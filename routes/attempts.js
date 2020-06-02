@@ -26,4 +26,7 @@ router.get('/:attemptID', attemptsCtrl.showOneAttempt);
 // Not RESTful according to UCRR, but greatly improves flow across routers
 router.post('/challenges/:challengeID', attemptsCtrl.createAttempt);
 
+// Deletes an attempt
+router.delete('/:attemptID', attemptsCtrl.deleteOneAttempt);
+
 module.exports = router;
