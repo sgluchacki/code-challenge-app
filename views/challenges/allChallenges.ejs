@@ -14,9 +14,6 @@
         <td>Author</td>
         <td>Gist</td>
         <!-- <td>Number of Attempts</td> NEEDS FURTHER INVESTIGATION-->
-        <% if (user) { %> 
-        <td>Have I Attempted This?</td>
-        <% } %>
         <td>Has This Been Solved?</td>
         <td></td>
     </tr></thead>
@@ -34,9 +31,6 @@
                     </td>
                     <td><%= challenge.gist %></td>
                     <!-- <td>Number of attempts here</td> NEEDS FURTHER INVESTIGATION-->
-                    <% if (user) { %> 
-                    <td>If you've attempted it, it'll go here</td>
-                    <% } %>
                     <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
                     <td><a href="/challenges/<%= challenge._id %>">Details</a></td>
                 </tr>
