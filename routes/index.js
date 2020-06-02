@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Code Checker' });
 });
 
-//confirm this after building views
+
 // Is this a slick solution? It feels like a slick solution.
 router.get('/index', authenticate.hasSelectedUserType);
 

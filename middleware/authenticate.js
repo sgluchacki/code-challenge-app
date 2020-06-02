@@ -13,7 +13,21 @@ function hasSelectedUserType(req, res, next) {
     else res.redirect('/preferences');
 }
 
+// checks user's isCoder status and allows related paths
+function coderCheck(req, res, next) {
+    if (req.user.isCoder) next();
+    else res.redirect('preferences');
+}
+
+// checks user's isChallenger status and allows related paths
+function challengerCheck(req, res, next) {
+    if (req.user.isChallenger) next();
+    else res.redirect('preferences');
+}
+
 module.exports = {
     isLoggedIn,
-    hasSelectedUserType
+    hasSelectedUserType,
+    coderCheck,
+    challengerCheck
 }
