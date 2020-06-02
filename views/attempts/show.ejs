@@ -2,16 +2,42 @@
 
 <table>
     <thead><tr>
+        <% if (user) { %>
+        <% if(JSON.stringify(attempt.challenge.challenger) === JSON.stringify(user._id)) { %>
+            <td>Is This Correct?</td>
+        <% }} %>
         <td>Challenge</td>
         <td>Attempt Number</td>
         <td>Is this Correct?</td>
         <td>Brief</td>
-        <td>Your Attempt</td> 
+        <td>Attempt</td> 
         <% if (attempt.isCorrect === '0') { %>
             <td></td>
         <% } %> 
     </tr></thead>
     <tbody><tr>
+        <% if (user) { %>
+        <% if(JSON.stringify(attempt.challenge.challenger) === JSON.stringify(user._id)) { %>
+            <td>
+                <form action="/attempts/<%= attempt._id %>?_method=PUT" method="POST" style="display: inline;">
+                    <select name="isCorrect">
+                        <% for (let i = 1; i >= -1; --i) { %>
+                            <option value="<%= i %>"
+                                <% if (`${i}` === attempt.isCorrect) { %>
+                                    selected
+                                <% } %>
+                            >
+                                <% if (`${i}` === '-1') { %>Nope
+                                    <% } else if (`${i}` === '0') { %>Awaiting Review
+                                    <% } else if (`${i}` === '1') { %>Yes!
+                                <% } %>
+                            </option>
+                        <% } %>
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+        <% }} %>
         <td><%= attempt.challenge.title %></td>
         <td>show attempt number here</td>
         <td>

@@ -59,10 +59,17 @@ function deleteOneAttempt(req, res) {
     })
 }
 
+function updateOneAttempt(req, res) {
+    Attempt.findByIdAndUpdate(req.params.attemptID, req.body, {new: true}, function(err, updatedAttemptFromDb) {
+        res.redirect(`/attempts/${updatedAttemptFromDb._id}`);
+    });
+}
+
 module.exports = {
     getAllAttempts,
     showNewAttemptForm,
     createAttempt,
     showOneAttempt,
-    deleteOneAttempt
+    deleteOneAttempt,
+    updateOneAttempt
 }

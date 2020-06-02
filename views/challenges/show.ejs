@@ -10,7 +10,9 @@
         <td>Author</td>
         <td>Gist</td>
         <td>Number of Attempts</td>
-        <td>Have I Attempted This?</td>
+        <% if (user) { %>
+            <td>Have I Attempted This?</td>
+        <% } %>
         <td>Has This Been Solved?</td>
         <td>Details</td>
     </tr></thead>
@@ -29,13 +31,15 @@
 
         <!-- fix this when the attempts are working. -->
         <td><%= attemptsOfThisChallenge.length%></td>
-        <td>
-            <% let didIAttempt = false; %>
-            <% attemptsOfThisChallenge.forEach(function(attempt){ %>
-                <% if (JSON.stringify(attempt.coder._id) === JSON.stringify(user._id)) didIAttempt = true; %>
-            <% }) %>
-            <%= didIAttempt ? 'Yes' : 'No' %>
-        </td>
+        <% if (user) { %>
+            <td>
+                <% let didIAttempt = false; %>
+                <% attemptsOfThisChallenge.forEach(function(attempt){ %>
+                    <% if (JSON.stringify(attempt.coder._id) === JSON.stringify(user._id)) didIAttempt = true; %>
+                <% }) %>
+                <%= didIAttempt ? 'Yes' : 'No' %>
+            </td>
+        <% } %>
         <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
         <td><%= challenge.details %></td>
     </tr>

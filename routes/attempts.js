@@ -14,7 +14,7 @@ router.get('/', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.g
 // Does not follow user-centric RESTful routing (UCRR),
 // but needed to reduce clutter 
 // and for better navigational flow
-router.get('/challenges/:challengeID/new', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.showNewAttemptForm)
+router.get('/challenges/:challengeID/new', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.showNewAttemptForm);
 
 // Shows submitted attempt
 // time-permitting, I hope to show an edit form until the 
@@ -26,6 +26,10 @@ router.get('/:attemptID', attemptsCtrl.showOneAttempt);
 // Creates a new attempts
 // Not RESTful according to UCRR, but greatly improves flow across routers
 router.post('/challenges/:challengeID', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.createAttempt);
+
+// Updates an attempt
+// Only used by corresponding challenger
+router.put('/:attemptID', attemptsCtrl.updateOneAttempt);
 
 // Deletes an attempt
 router.delete('/:attemptID', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.deleteOneAttempt);
