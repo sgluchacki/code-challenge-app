@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
-<form action="/users/<%= user.googleId %>?_method=PUT" method="POST">
+<form action="/users/update?_method=PUT" method="POST">
     <label>Display Name:</label>
     <input type="text" name="displayName" value=<%= user.displayName %>><br>
     <label>I want to be a coder:</label>
