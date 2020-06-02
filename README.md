@@ -4,7 +4,7 @@ Have you ever asked yourself "Is there a place I can go to attempt some code cha
 
 This is an express.js app built to satisfy all of your (read "my, the author's") code challenge needs! Does something like this already exist? Yes! Is it better than what I built? Also yes! But, **I** didn't make the other ones, so I don't like them quite as much. So there.
 
-Now, for the low, low price of NOTHING (*donations appreciated!*) you can play around with this app, submit code challenges, submit attempts, review submissions and so much more! Now, off to the details!
+Now, for the low, low price of NOTHING (*donations appreciated!*) you can play around with this app, submit code challenges, submit attempts, review submissions and so much more! Now, off to the fine print!
 
 ## Technologies Used
 
