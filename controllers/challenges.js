@@ -1,5 +1,5 @@
 const Challenge = require('../models/challenge');
-const User = require('../models/user');
+const Attempt = require('../models/attempt');
 
 function getAllChallenges(req, res) {
     // console.log(req.user, '<-----req.user')
@@ -38,25 +38,25 @@ function createNewChallenge(req, res) {
     });
 }
 
+// shows one challenge and passes all associated info along to the view
+// by nature of the construction of challenge we need to populate both the 
+// attempts of the challenge and the users of each attempt
 function showOneChallenge(req, res) {
-    // find one challenge by params, display corresponding show view
-    // pass challenge.title along as title
-    // pass challenge along
-    // console.log('req ===========>', req , '<======== req')
-    // console.log(req.user , '<======== req.user')
     Challenge.findById(req.params.id)
         .populate({path: 'challenger'})
         .exec(function(err, challenge) {
-        // console.log(challenge , '<==============challenge from showOneChallenge')
-        res.render('challenges/show', {
-        title: challenge.title,
-        challenge    
-        });
+            Attempt.find({coder: challenge.challenger._id})
+            .populate({path: 'coder'})
+            .exec(function(err, attemptsFromDb) {
+                // console.log(attemptsFromDb , '<=====attemptsFromDb');
+                res.render('challenges/show', {
+                title: challenge.title,
+                challenge,
+                attemptsOfThisChallenge: attemptsFromDb
+                });
+            }
+        );
     });
-
-    // res.render('challenges/new', {
-    //     title: 'Create A New Challenge'
-    // });
 }
 
 module.exports = {

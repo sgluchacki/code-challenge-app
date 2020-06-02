@@ -7,9 +7,7 @@ function getAllAttempts(req, res) {
     Attempt.find({coder: req.user._id})
     .populate({
         path: 'challenge',
-        populate: {
-            path: 'challenger'
-        }
+        populate: {path: 'challenger'}
     })                       // figure out this shinola
     .exec(function(err, allAttemptsFromDb) {
         // console.log(allAttemptsFromDb[0].challenge.challenger , '<=======allAttemptsFromDb[0].challenge.challenger')
