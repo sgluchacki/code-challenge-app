@@ -6,7 +6,8 @@
             <td>Attempt Number</td>
             <td>Challenger</td>
             <td>Challenge</td>
-            <td>Gist</td>
+            <td>Gist of Challenge</td>
+            <td>Brief of Attempt</td>
             <td>Is This Correct?</td>
             <td></td>
         </tr></thead>
@@ -15,10 +16,11 @@
                     <tr>
                         <td>Can I get the number of attempts per challenge here?</td>
                         <td><%= attempt.challenge.challenger.displayName %>
-                            <%= attempt.challenge.challenger._id === user._id ? ' (You)' : '' %>
+                            <%= JSON.stringify(attempt.challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
                         </td>
                         <td><%= attempt.challenge.title %></td>
                         <td><%= attempt.challenge.gist %></td>
+                        <td><%= attempt.brief %></td>
                         <td><%= attempt.isCorrect ? 'Yes' : 'No' %></td>
                         <td><a href="/attempts/<%= attempt._id %>">Details</a></td>
                     </tr>

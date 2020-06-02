@@ -16,6 +16,12 @@ router.get('/', attemptsCtrl.getAllAttempts);
 // and for better navigational flow
 router.get('/challenges/:challengeID/new', attemptsCtrl.showNewAttemptForm)
 
+// Shows submitted attempt
+// time-permitting, I hope to show an edit form until the 
+// attempt has been reviewed by the challenger
+// similar to above, these can get big so independent view is necessary
+router.get('/:attemptID', attemptsCtrl.showOneAttempt);
+
 // Creates a new attempts
 // Not RESTful according to UCRR, but greatly improves flow across routers
 router.post('/challenges/:challengeID', attemptsCtrl.createAttempt);

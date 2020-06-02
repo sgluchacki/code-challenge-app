@@ -8,7 +8,7 @@ const authenticate = require('../middleware/authenticate');
 
 // Routes
 
-// Displays all challenges sitewide
+// Displays all challenges for the logged-in user
 router.get('/', challengesCtrl.getAllChallengesForUser);
 
 // Displays all challenges sitewide

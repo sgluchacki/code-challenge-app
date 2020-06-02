@@ -17,7 +17,8 @@ const codeAttemptSchema = new Schema({
     },
     isCorrect: {
         type: String,
-        enum: ['-1', '0', '1']      // 0 => unreviewed, -1 => not valid, 1 => valid
+        enum: ['-1', '0', '1'],      // 0 => unreviewed, -1 => not valid, 1 => valid
+        default: 0
     },
     brief: {
         type: String,
