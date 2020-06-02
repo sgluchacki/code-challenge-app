@@ -10,8 +10,12 @@
         <a href="/challenges/all">ALL CHALLENGES</a> |
         <!-- expand if statement to include other links -->
         <% if (user) { %>
-            <a href="/challenges">MY CHALLENGES</a> |
-            <a href="/attempts">MY ATTEMPTS</a> |
+            <% if (user.isChallenger) { %>
+                <a href="/challenges">MY CHALLENGES</a> |
+            <% } %>
+            <% if (user.isCoder) { %>
+                <a href="/attempts">MY ATTEMPTS</a> |
+            <% } %>
             <a href="/preferences">USER SETTINGS</a> |
             <a href="/logout">LOGOUT</a>
         <% } else { %>
