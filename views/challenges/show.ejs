@@ -3,7 +3,9 @@
 
 <table>
     <thead><tr>
+        <% if (user) { %>
         <td></td>
+        <% } %>
         <td>Challenge Name</td>
         <td>Author</td>
         <td>Gist</td>
@@ -12,10 +14,14 @@
         <td>Details</td>
     </tr></thead>
     <tbody><tr>
+        <% if (user) { %>
         <td><a href="/attempts/challenges/<%= challenge._id %>/new">Attempt this!</a></td>
+        <% } %>
         <td><%= challenge.title %></td>
         <td><%= challenge.challenger.displayName %>
+            <% if (user) { %>
             <%= JSON.stringify(challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
+            <% } %>
         </td>
         <td><%= challenge.gist %></td>
 
