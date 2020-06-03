@@ -1,13 +1,13 @@
 <%- include('../partials/header.ejs') %>
 
 <form action="/challenges/" method="POST">
-    <label>Title:</label>
+    <label>Title</label>
     <input type="text" name="title"><br>
-    <label>The Gist:</label>
+    <label id="submit-gist">The Gist</label>
     <input type="text" name="gist" maxlength="150"><br>
     <!-- inside text area, a return is registered as something like \r\n
     search #instructions in Jae slack channel -->
-    <label>Detailed Description:</label>
+    <label>Detailed Description</label>
     <textarea name="details" placeholder="Be precise. Be nice."></textarea><br>
     <input class="button-primary" type="submit" value="Add Challenge">
 </form>

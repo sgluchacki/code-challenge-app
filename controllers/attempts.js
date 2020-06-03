@@ -22,7 +22,7 @@ function getAllAttempts(req, res) {
 function showNewAttemptForm(req, res) {
     Challenge.findById(req.params.challengeID, function(err, challengeFromDb) {
         res.render('attempts/new', {
-            title: `Submit A New Attempt to "${challengeFromDb.title}"`,
+            title: `Attempt "${challengeFromDb.title}"`,
             challenge: challengeFromDb
         });
 

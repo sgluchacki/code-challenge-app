@@ -1,10 +1,10 @@
 <%- include('../partials/header.ejs') %>
 
 <form action="/attempts/challenges/<%= challenge._id %>" method="POST">
-    <label>Brief Description:</label>
+    <label>Brief Description</label>
     <input  type="text" name="brief"><br>
-    <label>Enter Your Code:</label><br>
-    <textarea name="codeBody"></textarea><br>
+    <label>Enter Your Code</label>
+    <textarea name="codeBody" class="submit-code" placeholder="Code away. You've got this."></textarea><br>
     <input class="button-primary" type="submit" value="Submit Your Attempt">
 </form>
 
