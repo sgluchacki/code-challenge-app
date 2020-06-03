@@ -21,7 +21,7 @@ The data is warehoused in an Atlas-hosted MongoDB and accessed via Mongoose. Hos
 
 ## Getting Started
 
-[Click here](Heroku Link Here, you fool!) to view the live app! [This Trello board](https://trello.com/b/uw6JlGMz/code-challenge-app) served as the organizational anchor of this project. 
+[Click here](https://unstuck-code-challenges.herokuapp.com/) to view the live app! [This Trello board](https://trello.com/b/uw6JlGMz/code-challenge-app) served as the organizational anchor of this project. 
 
 Unauthorized users can view the complete list of posted challenges. After logging in with your Google account, you will be routed to user preferences where you will need to select whether you will be a coder or a challenger – you must choose one to continue. After this, navigating the app should be pretty self-explanatory. Happy coding!
 
