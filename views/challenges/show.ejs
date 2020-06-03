@@ -1,25 +1,19 @@
 <%- include('../partials/header.ejs') %>
 
 
-<table>
+<table class="u-full-width">
     <thead><tr>
+        <th>Challenge Name</th>
+        <th>Author</th>
+        <th>Gist</th>
         <% if (user) { %>
-        <td></td>
+            <th>Have I Attempted This?</th>
         <% } %>
-        <td>Challenge Name</td>
-        <td>Author</td>
-        <td>Gist</td>
-        <td>Number of Attempts</td>
-        <% if (user) { %>
-            <td>Have I Attempted This?</td>
-        <% } %>
-        <td>Has This Been Solved?</td>
-        <td>Details</td>
+        <th>Has This Been Solved?</th>
+        <th>Details</th>
     </tr></thead>
     <tbody><tr>
-        <% if (user) { %>
-        <td><a href="/attempts/challenges/<%= challenge._id %>/new">Attempt this!</a></td>
-        <% } %>
+        
         <td><%= challenge.title %></td>
         <td><%= challenge.challenger.displayName %>
             <% if (user) { %>
@@ -30,8 +24,8 @@
 
 
         <!-- fix this when the attempts are working. -->
-        <td><%= attemptsOfThisChallenge.length%></td>
-        <% if (user) { %>
+        
+        <% if (user.isCoder) { %>
             <td>
                 <% let didIAttempt = false; %>
                 <% attemptsOfThisChallenge.forEach(function(attempt){ %>
@@ -45,15 +39,21 @@
     </tr>
     </tbody>
 </table>
+<% if (user.isCoder) { %>
+    <a class="button button-primary table-button" href="/attempts/challenges/<%= challenge._id %>/new">Try this!</a>
+<% } %>
 <br>
 <br> 
 <br>
-<table>
+<br>
+
+<h3>Displaying all <%= attemptsOfThisChallenge.length %> attempts:</h3>
+<table class="u-full-width">
     <thead><tr>
-        <td>Coder</td>
-        <td>Is this Correct?</td>
-        <td>Brief Description</td>
-        <td></td> 
+        <th>Coder</th>
+        <th>Is this Correct?</th>
+        <th>Brief Description</th>
+        <th></th> 
     </tr></thead>
     <tbody>
         <% attemptsOfThisChallenge.forEach(function(attempt) { %>
@@ -65,8 +65,8 @@
                     <% } else if (attempt.isCorrect === '1') { %>Yes!
                     <% } %>
                 </td>
-                <td><%= attempt.brief %></td>
-                <td><a href="/attempts/<%= attempt._id %>">Details</a></td>
+                <td><a href="/attempts/<%= attempt._id %>"><%= attempt.brief %></a></td>
+               
             </tr>
         <% }); %>
     </tbody>

@@ -1,33 +1,34 @@
 <%- include('../partials/header.ejs') %>
 
-<% if (user) { %>
-    <a href="/challenges/new">Submit a New Challenge</a>
-<% } %>
 
 <% if (userChallenges.length) { %>
-<table>
-    <thead><tr>
-        <td>Challenge Name</td>
-        <td>Gist</td>
-        <!-- <td>Number of Attempts</td> NEEDS FURTHER INVESTIGAION -->
-        <td>Has This Been Solved?</td>
-        <td></td>
-    </tr></thead>
+<table class="u-full-width">
+    <thead>
+        <tr>
+            <th>Challenge Name</th>
+            <th>Gist</th>
+            <!-- <th>Number of Attempts</th> NEEDS FURTHER INVESTIGAION -->
+            <th>Has This Been Solved?</th>
+        </tr>
+    </thead>
     <tbody>
-            <% userChallenges.forEach(function(challenge) { %>
-                <tr>
-                    <td><%= challenge.title %></td>
-                    <td><%= challenge.gist %></td>
-                    <!-- <td>Number of attempts here</td> NEEDS FURTHER INVESTIGATION -->
-                    <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
-                    <td><a href="/challenges/<%= challenge._id %>">Details</a></td>
-                </tr>
+        <% userChallenges.forEach(function(challenge) { %>
+        <tr>
+            <td><a href="/challenges/<%= challenge._id %>"><%= challenge.title %></a></td>
+            <td><%= challenge.gist %></td>
+            <!-- <td>Number of attempts here</td> NEEDS FURTHER INVESTIGATION -->
+            <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
+        </tr>
 
-            <% }) %>
+        <% }) %>
         <% } else { %>
-            <p>No Challenges Yet</p>
+        <p>No Challenges Yet</p>
         <% } %>
     </tbody>
 </table>
+
+<% if (user) { %>
+<a href="/challenges/new" class="button button-primary">Submit a New Challenge</a>
+<% } %>
 
 <%- include('../partials/footer.ejs') %>

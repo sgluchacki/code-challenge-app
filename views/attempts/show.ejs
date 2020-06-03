@@ -1,62 +1,64 @@
 <%- include('../partials/header.ejs') %>
 
-<table>
-    <thead><tr>
-        <% if (user) { %>
-        <% if(JSON.stringify(attempt.challenge.challenger) === JSON.stringify(user._id)) { %>
-            <td>Is This Correct?</td>
-        <% }} %>
-        <td>Challenge</td>
-        <td>Attempt Number</td>
-        <td>Is this Correct?</td>
-        <td>Brief</td>
-        <td>Attempt</td> 
-        <% if (attempt.isCorrect === '0') { %>
-            <td></td>
-        <% } %> 
-    </tr></thead>
-    <tbody><tr>
-        <% if (user) { %>
-        <% if(JSON.stringify(attempt.challenge.challenger) === JSON.stringify(user._id)) { %>
+<table class="u-full-width">
+    <thead>
+        <tr>
+            <th>Challenge</th>
+            <th>Is this Correct?</th>
+            <th>Brief</th>
+            <th>Attempt</th>
+            <% if (user) { %>
+            <% if(JSON.stringify(attempt.coder) === JSON.stringify(user._id)) { %>
+            <% if (attempt.isCorrect === '0') { %>
+            <th></th>
+            <% }}} %>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= attempt.challenge.title %></td>
             <td>
-                <form action="/attempts/<%= attempt._id %>?_method=PUT" method="POST" style="display: inline;">
-                    <select name="isCorrect">
-                        <% for (let i = 1; i >= -1; --i) { %>
-                            <option value="<%= i %>"
-                                <% if (`${i}` === attempt.isCorrect) { %>
-                                    selected
-                                <% } %>
-                            >
-                                <% if (`${i}` === '-1') { %>Nope
-                                    <% } else if (`${i}` === '0') { %>Awaiting Review
-                                    <% } else if (`${i}` === '1') { %>Yes!
-                                <% } %>
-                            </option>
-                        <% } %>
-                    </select>
-                    <input type="submit" value="Submit">
-                </form>
+                <% if (attempt.isCorrect === '-1') { %>Nope
+                <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
+                <% } else if (attempt.isCorrect === '1') { %>Yes!
+                <% } %>
             </td>
-        <% }} %>
-        <td><%= attempt.challenge.title %></td>
-        <td>show attempt number here</td>
-        <td>
-            <% if (attempt.isCorrect === '-1') { %>Nope
-            <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
-            <% } else if (attempt.isCorrect === '1') { %>Yes!
-            <% } %>
-        </td>
-        <td><%= attempt.brief %></td>
-        <td><%= attempt.codeBody %></td>
-        <% if (attempt.isCorrect === '0') { %>
+            <td><%= attempt.brief %></td>
+            <td><%= attempt.codeBody %></td>
+            <% if (user) { %>
+            <% if(JSON.stringify(attempt.coder) === JSON.stringify(user._id)) { %>
+            <% if (attempt.isCorrect === '0') { %>
             <td>
                 <form action="/attempts/<%= attempt._id %>?_method=DELETE" method="POST" style="display: inline;">
-                    <input type="submit" value="DELETE">
+                    <input type="submit" value="DELETE" class="button-primary table-button">
                 </form>
             </td>
-        <% } %>
-    </tr>
+            <% }}} %>
+        </tr>
     </tbody>
 </table>
 
+<% if (user) { %>
+<% if(JSON.stringify(attempt.challenge.challenger) === JSON.stringify(user._id)) { %>
+
+<% }} %>
+<% if (user) { %>
+<% if(JSON.stringify(attempt.challenge.challenger) === JSON.stringify(user._id)) { %>
+<td>
+    <form action="/attempts/<%= attempt._id %>?_method=PUT" method="POST" style="display: inline;">
+        <label>Is This Correct?</label>
+        <select name="isCorrect">
+            <% for (let i = 1; i >= -1; --i) { %>
+            <option value="<%= i %>" <% if (`${i}` === attempt.isCorrect) { %> selected <% } %>>
+                <% if (`${i}` === '-1') { %>Nope
+                <% } else if (`${i}` === '0') { %>Awaiting Review
+                <% } else if (`${i}` === '1') { %>Yes!
+                <% } %>
+            </option>
+            <% } %>
+        </select>
+        <input type="submit" value="Submit" class="button-primary">
+    </form>
+</td>
+<% }} %>
 <%- include('../partials/footer.ejs') %>

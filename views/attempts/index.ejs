@@ -1,44 +1,46 @@
 <%- include('../partials/header.ejs') %>
 
 <% if (allAttempts.length) { %>
-    <table>
-        <thead><tr>
-            <td>Challenger</td>
-            <td>Challenge</td>
-            <td>Gist of Challenge</td>
-            <td>Brief of Attempt</td>
-            <td>Is This Correct?</td>
-            <td></td>
-            <td></td>
-        </tr></thead>
-        <tbody>
-                <% allAttempts.forEach(function(attempt, index) { %>
-                    <tr>
-                        <td><%= attempt.challenge.challenger.displayName %>
-                            <%= JSON.stringify(attempt.challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
-                        </td>
-                        <td><%= attempt.challenge.title %></td>
-                        <td><%= attempt.challenge.gist %></td>
-                        <td><%= attempt.brief %></td>
-                        <td><% if (attempt.isCorrect === '-1') { %>Nope
-                            <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
-                            <% } else if (attempt.isCorrect === '1') { %>Yes!
-                            <% } %></td>
-                        <td><a href="/attempts/<%= attempt._id %>">Details</a></td>
-                        <% if (attempt.isCorrect === '0') { %>
-                            <td>
-                                <form action="/attempts/<%= attempt._id %>?_method=DELETE" method="POST" style="display: inline;">
-                                    <input type="submit" value="DELETE">
-                                </form>
-                            </td>
-                        <% } %>
-                    </tr>
-    
-                <% }); %>
+<table class="u-full-width">
+    <thead>
+        <tr>
+            <th>Challenger</th>
+            <th>Challenge</th>
+            <th>Gist of Challenge</th>
+            <th>Brief of Attempt</th>
+            <th>Is This Correct?</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% allAttempts.forEach(function(attempt, index) { %>
+        <tr>
+            <td><%= attempt.challenge.challenger.displayName %>
+                <%= JSON.stringify(attempt.challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
+            </td>
+            <td><%= attempt.challenge.title %></td>
+            <td><%= attempt.challenge.gist %></td>
+            <td><a href="/attempts/<%= attempt._id %>"><%= attempt.brief %></a></td>
+            <td><% if (attempt.isCorrect === '-1') { %>Nope
+                <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
+                <% } else if (attempt.isCorrect === '1') { %>Yes!
+                <% } %></td>
+            <% if (attempt.isCorrect === '0') { %>
+            <td>
+                <form action="/attempts/<%= attempt._id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <input type="submit" value="DELETE" class="button-primary table-button">
+                </form>
+            </td>
             <% } else { %>
-                <p>No Attempts Yet</p>
+                <td></td>
             <% } %>
-        </tbody>
-    </table>
+        </tr>
+
+        <% }); %>
+        <% } else { %>
+        <p>No Attempts Yet</p>
+        <% } %>
+    </tbody>
+</table>
 
 <%- include('../partials/footer.ejs') %>

@@ -6,7 +6,7 @@ const authenticate = require('../middleware/authenticate');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Code Checker' });
+  res.render('index', { title: 'UnStuck.' });
 });
 
 

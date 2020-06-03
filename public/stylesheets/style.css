@@ -1,8 +1,123 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  font-family: 'Raleway', sans-serif;
+  /* padding-top: 0; */
 }
 
-a {
-  color: #00B7FF;
+nav {
+  margin-top: 0;
+}
+
+body {
+  margin-top: 0;
+}
+
+.container {
+  max-width: 100%; 
+}
+
+.header {
+  margin-top: 2rem;
+  text-align: center; 
+}
+
+.data {
+  border-top: 1px solid #eee;
+  padding: 4rem 0;
+  margin-bottom: 0;
+  }
+
+.navbar {
+  display: initial;
+  /* style here for hamburger if desired  */
+}
+
+.table-button {
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+textarea {
+  overflow: auto;
+  width: 60rem;
+  height: 20rem;
+}
+
+  /* Larger than phone */
+@media (min-width: 550px) {
+  .header {
+      margin-top: 3rem; 
+      margin-bottom: 6rem; 
+  }
+
+  .data {
+      padding: 6rem 0; 
+  }  
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  /* Navbar */
+  .navbar + .data {
+      border-top-width: 0; 
+  }
+
+  .navbar,
+  .navbar-spacer {
+      display: block;
+      width: 100%;
+      height: 6.5rem;
+      background: #fff;
+      z-index: 99;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee; 
+  }
+
+  .navbar-spacer {
+      display: none; 
+  }
+
+  .navbar > .container {
+      width: 100%; 
+  }
+
+  .navbar-list {
+      list-style: none;
+      margin-bottom: 0; 
+  }
+
+  .navbar-item {
+      position: relative;
+      float: left;
+      margin-bottom: 0; 
+  }
+
+  .navbar-link {
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2rem;
+      margin-right: 35px;
+      text-decoration: none;
+      line-height: 6.5rem;
+      color: #222; 
+  }
+
+  .navbar-link.active {
+      color: #33C3F0; 
+  }
+
+  .has-docked-nav .navbar {
+      position: fixed;
+      top: 0;
+      left: 0; 
+  }
+
+  .has-docked-nav .navbar-spacer {
+      display: block; 
+  }
+
+  /* Re-overiding the width 100% declaration to match size of % based container */
+  .has-docked-nav .navbar > .container {
+      width: 80%; 
+  }
 }
