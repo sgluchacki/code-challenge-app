@@ -45,7 +45,7 @@ function showOneChallenge(req, res) {
     Challenge.findById(req.params.id)
         .populate({path: 'challenger'})
         .exec(function(err, challenge) {
-            Attempt.find({coder: challenge.challenger._id})
+            Attempt.find({challenge: challenge._id})
             .populate({path: 'coder'})
             .exec(function(err, attemptsFromDb) {
                 // console.log(attemptsFromDb , '<=====attemptsFromDb');

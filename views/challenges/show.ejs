@@ -47,6 +47,7 @@
 <br>
 <br>
 
+<% if (attemptsOfThisChallenge.length) { %>
 <h3>Displaying all <%= attemptsOfThisChallenge.length %> attempts:</h3>
 <table class="u-full-width">
     <thead><tr>
@@ -71,6 +72,8 @@
         <% }); %>
     </tbody>
 </table>
-    
+<% } else { %>
+    <h3>No Attempts Yet</h3>
+<% } %>
 
 <%- include('../partials/footer.ejs') %>
