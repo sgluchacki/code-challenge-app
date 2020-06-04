@@ -24,7 +24,7 @@
 
 
         <!-- fix this when the attempts are working. -->
-        
+        <% if (user) { %>
         <% if (user.isCoder) { %>
             <td>
                 <% let didIAttempt = false; %>
@@ -33,13 +33,13 @@
                 <% }) %>
                 <%= didIAttempt ? 'Yes' : 'No' %>
             </td>
-        <% } %>
+        <% }} %>
         <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
         <td><pre><%= challenge.details %></pre></td>
     </tr>
     </tbody>
 </table>
-<% if (user.isCoder) { %>
+<% if (user && user.isCoder) { %>
     <a class="button button-primary table-button" href="/attempts/challenges/<%= challenge._id %>/new">Try this!</a>
 <% } %>
 <br>
