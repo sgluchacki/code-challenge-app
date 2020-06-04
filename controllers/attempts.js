@@ -45,7 +45,7 @@ function showOneAttempt(req, res) {
     Attempt.findById(req.params.attemptID)
         .populate({path: 'challenge'})
         .exec(function(err, attemptFromDb) {
-            console.log(attemptFromDb , '<======attemptFromDb')
+            // console.log(attemptFromDb , '<======attemptFromDb')
             res.render('attempts/show', {
                 title: `Details of "${attemptFromDb.brief}"`,
                 attempt: attemptFromDb
@@ -60,9 +60,29 @@ function deleteOneAttempt(req, res) {
 }
 
 function updateOneAttempt(req, res) {
+    // Attempt.findByIdAndUpdate(req.params.attemptID, req.body, {new: true}, function(err, updatedAttemptFromDb) {
+    //     res.redirect(`/attempts/${updatedAttemptFromDb._id}`);
+    // });
     Attempt.findByIdAndUpdate(req.params.attemptID, req.body, {new: true}, function(err, updatedAttemptFromDb) {
+        // if isCorrect===1, find challenge
+        // update 
+        Challenge.findOne({_id: updatedAttemptFromDb.challenge}, function(err, challengeAttempted) {
+            // console.log(challengeAttempted , '<======= challengeAttempted from findOne')
+            Attempt.find({challenge: challengeAttempted._id}, function(err, allAttemptsOfChallenge) {
+                // console.log(allAttemptsOfChallenge , '<======== allAttemptsOfChallenge');
+                challengeAttempted.isSolved = false;
+                for (let i = 0; i < allAttemptsOfChallenge.length; ++i) {
+                    if (allAttemptsOfChallenge[i].isCorrect === '1') { 
+                        challengeAttempted.isSolved = true;
+                    }
+                }
+                // console.log(challengeAttempted , '<======= challengeAttempted After for')
+                challengeAttempted.save();
+            });
+        });
         res.redirect(`/attempts/${updatedAttemptFromDb._id}`);
     });
+    
 }
 
 module.exports = {
