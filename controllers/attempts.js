@@ -14,7 +14,7 @@ function getAllAttempts(req, res) {
         // console.log(req.user , '<=======req.user')
         res.render('attempts/index', {
             allAttempts: allAttemptsFromDb,
-            title: 'All Attempts'
+            title: `${req.user.displayName}'s Attempts`
         });
     });
 }

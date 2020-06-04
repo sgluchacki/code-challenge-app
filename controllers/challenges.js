@@ -19,8 +19,8 @@ function getAllChallengesForUser(req, res) {
     Challenge.find({challenger: req.user._id}, function(err, userChallenges) { // why no work?
         res.render('challenges/index', {
             userChallenges,
-            title: 'All of Your Challenges'
-        })
+            title: `${req.user.displayName}'s Challenges`
+        });
     });
 }
 
