@@ -2,7 +2,12 @@
 
 <form action="/users/update?_method=PUT" method="POST">
     <label>Display Name:</label>
-    <input type="text" name="displayName" value=<%= user.displayName %>><br>
+    <input type="text" name="displayName" value=
+    <% if (user.displayName) { %>
+        <%= user.displayName %>
+    <% } else { %>
+        <%= user.name %>
+    <% } %>><br>
     <label>I want to be a coder:</label>
     <select name="isCoder">
         <option value="<%= user.isCoder %>" selected><%= user.isCoder %></option>
