@@ -29,7 +29,7 @@ router.post('/challenges/:challengeID', authenticate.isLoggedIn, authenticate.co
 
 // Updates an attempt
 // Only used by corresponding challenger
-router.put('/:attemptID', attemptsCtrl.updateOneAttempt);
+router.put('/:attemptID', authenticate.isLoggedIn, authenticate.challengerCheck, attemptsCtrl.updateOneAttempt);
 
 // Deletes an attempt
 router.delete('/:attemptID', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.deleteOneAttempt);

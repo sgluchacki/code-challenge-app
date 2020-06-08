@@ -59,24 +59,18 @@ function deleteOneAttempt(req, res) {
     })
 }
 
+// Finds the associated challenge, then ALL attempts on that challenge
+// if any solution of that challenge is valid, updates challenge to solved
 function updateOneAttempt(req, res) {
-    // Attempt.findByIdAndUpdate(req.params.attemptID, req.body, {new: true}, function(err, updatedAttemptFromDb) {
-    //     res.redirect(`/attempts/${updatedAttemptFromDb._id}`);
-    // });
     Attempt.findByIdAndUpdate(req.params.attemptID, req.body, {new: true}, function(err, updatedAttemptFromDb) {
-        // if isCorrect===1, find challenge
-        // update 
         Challenge.findOne({_id: updatedAttemptFromDb.challenge}, function(err, challengeAttempted) {
-            // console.log(challengeAttempted , '<======= challengeAttempted from findOne')
             Attempt.find({challenge: challengeAttempted._id}, function(err, allAttemptsOfChallenge) {
-                // console.log(allAttemptsOfChallenge , '<======== allAttemptsOfChallenge');
-                challengeAttempted.isSolved = false;
+                challengeAttempted.isSolved = false;    // covers the case of users erroneously selecting correct and backtracking
                 for (let i = 0; i < allAttemptsOfChallenge.length; ++i) {
                     if (allAttemptsOfChallenge[i].isCorrect === '1') { 
                         challengeAttempted.isSolved = true;
                     }
                 }
-                // console.log(challengeAttempted , '<======= challengeAttempted After for')
                 challengeAttempted.save();
             });
         });

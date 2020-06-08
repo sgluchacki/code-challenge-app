@@ -42,4 +42,10 @@ Similarly, the user will have access to their coding subdirectory if they choose
 
 ## Next Steps
 
-Whatever features I don't get to by Monday morning will go here.
+The following items should be implemented in future versions. They are ordered by a combination of importance and cool factor:
+- Automation: Using some sort of API or internal logic, I would like the system to automatically validate attempts by comparing inputs and outputs.
+- Social elements: Here we can add features including favoriting challenges and attempts, comments on challenges, individualized feedback on attempts, adding and updating avatars, and user profiles
+- Improved navigation. Some times it requires a few too many clicks to get to your desired page
+- Implementation of specific languages
+- Improved error handling across the app; I'm a beginner, please forgive me!! I'll spend a few hours figuring out and implementing best practices here =)
+- Adding a developer console. This seems overwhelming at the moment, but I hope to look back in a few years and laugh about how easy this should be. 
