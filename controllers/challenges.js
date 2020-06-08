@@ -2,11 +2,9 @@ const Challenge = require('../models/challenge');
 const Attempt = require('../models/attempt');
 
 function getAllChallenges(req, res) {
-    // console.log(req.user, '<-----req.user')
     Challenge.find({})
-    .populate({path: 'challenger'})  // figure out this shinola
+    .populate({path: 'challenger'})
     .exec(function(err, allChallengesFromDb) {
-        // console.log(allChallengesFromDb , '<======allChallengesFromDb')
         res.render('challenges/allChallenges', {
             allChallenges: allChallengesFromDb,
             title: 'All Challenges'
@@ -15,8 +13,7 @@ function getAllChallenges(req, res) {
 }
 
 function getAllChallengesForUser(req, res) {
-    // console.log(req.user, '<==== req.user')
-    Challenge.find({challenger: req.user._id}, function(err, userChallenges) { // why no work?
+    Challenge.find({challenger: req.user._id}, function(err, userChallenges) {
         res.render('challenges/index', {
             userChallenges,
             title: `${req.user.displayName}'s Challenges`
@@ -32,7 +29,6 @@ function showNewChallengeForm(req, res) {
 
 function createNewChallenge(req, res) {
     req.body.challenger = req.user._id;
-    console.log(req.body , 'req.body')
     Challenge.create(req.body, function(err, newChallenge) {
         res.redirect('/challenges');
     });
@@ -48,8 +44,6 @@ function showOneChallenge(req, res) {
             Attempt.find({challenge: challenge._id})
             .populate({path: 'coder'})
             .exec(function(err, attemptsFromDb) {
-                // console.log(attemptsFromDb , '<=====attemptsFromDb');
-                // console.log(challenge , '<=====challenge');
                 res.render('challenges/show', {
                 title: challenge.title,
                 challenge,

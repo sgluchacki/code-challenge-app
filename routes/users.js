@@ -13,7 +13,7 @@ router.get('/auth/google',
 
 router.get('/oauth2callback',
   passport.authenticate('google', {
-    successRedirect: '/index',     // redirect user here
+    successRedirect: '/index',     // redirect user to preferences or usertype home here
     failureRedirect: '/'
   })
 );

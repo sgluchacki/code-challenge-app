@@ -7,6 +7,7 @@ const attemptsCtrl = require('../controllers/attempts');
 const authenticate = require('../middleware/authenticate');
 
 // Routes
+
 // Shows all attempts for a user
 router.get('/', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.getAllAttempts);
 
@@ -17,8 +18,6 @@ router.get('/', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.g
 router.get('/challenges/:challengeID/new', authenticate.isLoggedIn, authenticate.coderCheck, attemptsCtrl.showNewAttemptForm);
 
 // Shows submitted attempt
-// time-permitting, I hope to show an edit form until the 
-// attempt has been reviewed by the challenger
 // similar to above, these can get big so independent view is necessary
 // unauthenticated is okay
 router.get('/:attemptID', attemptsCtrl.showOneAttempt);

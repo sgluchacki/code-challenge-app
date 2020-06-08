@@ -7,7 +7,6 @@
         <tr>
             <th>Challenge Name</th>
             <th>Gist</th>
-            <!-- <th>Number of Attempts</th> NEEDS FURTHER INVESTIGAION -->
             <th>Has This Been Solved?</th>
         </tr>
     </thead>
@@ -16,7 +15,6 @@
         <tr>
             <td><a href="/challenges/<%= challenge._id %>"><%= challenge.title %></a></td>
             <td><%= challenge.gist %></td>
-            <!-- <td>Number of attempts here</td> NEEDS FURTHER INVESTIGATION -->
             <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
         </tr>
 

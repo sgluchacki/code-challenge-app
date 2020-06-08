@@ -2,17 +2,12 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../models/user');
 
-// need all of these fancy google things
-// figure out redirecting user to profile page
-// where do I add other user data
-// rework section with avatars. OR keep avatars
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
   },
   function(accessToken, refreshToken, profile, cb) {
-    // a user has logged in with OAuth...
     User.findOne({ googleId: profile.id }, function(err, user) {
         if (err) return cb(err);
         if (user) {
@@ -25,7 +20,6 @@ passport.use(new GoogleStrategy({
                 return cb(null, user);
             }
         } else {
-          // we have a new user via OAuth!
           const newUser = new User({
             name: profile.displayName,
             email: profile.emails[0].value,

@@ -24,7 +24,9 @@
                 <% } %>
             </td>
             <td><%= attempt.brief %></td>
-            <td><pre><code><%= attempt.codeBody %></code></pre></td>
+            <td>
+                <pre><code><%= attempt.codeBody %></code></pre>
+            </td>
             <% if (user) { %>
             <% if(JSON.stringify(attempt.coder) === JSON.stringify(user._id)) { %>
             <% if (attempt.isCorrect === '0') { %>

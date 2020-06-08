@@ -2,73 +2,76 @@
 
 
 <table class="u-full-width">
-    <thead><tr>
-        <th>Challenge Name</th>
-        <th>Author</th>
-        <th>Gist</th>
-        <% if (user) { %>
-            <th>Have I Attempted This?</th>
-        <% } %>
-        <th>Has This Been Solved?</th>
-        <th>Details</th>
-    </tr></thead>
-    <tbody><tr>
-        
-        <td><%= challenge.title %></td>
-        <td><%= challenge.challenger.displayName %>
+    <thead>
+        <tr>
+            <th>Challenge Name</th>
+            <th>Author</th>
+            <th>Gist</th>
             <% if (user) { %>
-            <%= JSON.stringify(challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
+            <th>Have I Attempted This?</th>
             <% } %>
-        </td>
-        <td><%= challenge.gist %></td>
-
-
-        <!-- fix this when the attempts are working. -->
-        <% if (user) { %>
-        <% if (user.isCoder) { %>
+            <th>Has This Been Solved?</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= challenge.title %></td>
+            <td><%= challenge.challenger.displayName %>
+                <% if (user) { %>
+                <%= JSON.stringify(challenge.challenger._id) === JSON.stringify(user._id) ? ' (You)' : '' %>
+                <% } %>
+            </td>
+            <td><%= challenge.gist %></td>
+            <% if (user) { %>
+            <% if (user.isCoder) { %>
             <td>
                 <% let didIAttempt = false; %>
                 <% attemptsOfThisChallenge.forEach(function(attempt){ %>
-                    <% if (JSON.stringify(attempt.coder._id) === JSON.stringify(user._id)) didIAttempt = true; %>
+                <% if (JSON.stringify(attempt.coder._id) === JSON.stringify(user._id)) didIAttempt = true; %>
                 <% }) %>
                 <%= didIAttempt ? 'Yes' : 'No' %>
             </td>
-        <% }} %>
-        <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
-        <td><pre><%= challenge.details %></pre></td>
-    </tr>
+            <% }} %>
+            <td><%= challenge.isSolved ? 'Yes' : 'No' %></td>
+            <td>
+                <pre><%= challenge.details %></pre>
+            </td>
+        </tr>
     </tbody>
 </table>
 <% if (user && user.isCoder) { %>
-    <a class="button button-primary table-button" href="/attempts/challenges/<%= challenge._id %>/new">Try this!</a>
+<a class="button button-primary table-button" href="/attempts/challenges/<%= challenge._id %>/new">Try this!</a>
 <% } %>
 <br>
-<br> 
+<br>
 <br>
 <br>
 
 <% if (attemptsOfThisChallenge.length) { %>
 <h3>Displaying all <%= attemptsOfThisChallenge.length %> attempts:</h3>
 <table class="u-full-width">
-    <thead><tr>
-        <th>Coder</th>
-        <th>Is this Correct?</th>
-        <th>Brief Description</th>
-        <th></th> 
-    </tr></thead>
+    <thead>
+        <tr>
+            <th>Coder</th>
+            <th>Is this Correct?</th>
+            <th>Brief Description</th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody>
         <% attemptsOfThisChallenge.forEach(function(attempt) { %>
-            <tr>
-                <td><%= attempt.coder.displayName %></td>
-                <td>
-                    <% if (attempt.isCorrect === '-1') { %>Nope
-                    <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
-                    <% } else if (attempt.isCorrect === '1') { %>Yes!
-                    <% } %>
-                </td>
-                <td><a href="/attempts/<%= attempt._id %>"><%= attempt.brief %></a></td>
-               
-            </tr>
+        <tr>
+            <td><%= attempt.coder.displayName %></td>
+            <td>
+                <% if (attempt.isCorrect === '-1') { %>Nope
+                <% } else if (attempt.isCorrect === '0') { %>Awaiting Review
+                <% } else if (attempt.isCorrect === '1') { %>Yes!
+                <% } %>
+            </td>
+            <td><a href="/attempts/<%= attempt._id %>"><%= attempt.brief %></a></td>
+
+        </tr>
         <% }); %>
     </tbody>
 </table>
