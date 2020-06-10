@@ -21,7 +21,7 @@ Here's a partial list of the technologies used – I'll refrain from extrapolati
 - probably some others I've missed
 
 
-The data is warehoused in an Atlas-hosted MongoDB and accessed via Mongoose. Hosting provided by Heroku. All views are created using Embedded JavaScript, and Skeleton provides the CSS framework. Oh, and for completeness the README is created using Markdown. I assume you can .
+The data is warehoused in an Atlas-hosted MongoDB and accessed via Mongoose. Hosting provided by Heroku. All views are created using Embedded JavaScript, and Skeleton provides the CSS framework. Oh, and for completeness the README is created using Markdown.
 
 ## Getting Started
 
